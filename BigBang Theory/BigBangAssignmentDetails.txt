@@ -1,0 +1,115 @@
+I have used index.html to call the bigbang.js file.
+
+I have avoided console output and instead displayed the output on html page
+
+The script tag is used in the end at it was not able to get the element p having "id1"
+
+The programs starts with a prompt asking user to choose the following options - 
+1)Search by Season number and Episode number
+2)Search by Episode IDs
+3)Search by Episode Name
+
+I have used switch case for this option part
+
+Any other input will alert "Invalid Option!"
+
+
+---------------------------------------------------------The working of 1)Search by Season number and Episode number------------------------------------------------
+
+
+After selecting option as 1
+
+User is prompted to enter season no and episode no
+
+This season no and episode no is then passed to the function searchBySeasonAndEpisode 
+
+I initiazed a flag isFound to seasonFound and episodeFound = false                        
+   
+I have used for of loop to loop through the episode array
+
+At every iteration a conditional if is placed to check if the entered season matches the current iterated season,
+If season is  not found seasonFound is set to false, hence no episode can ne found 
+if found, the flag seasonFound is set to true,
+And inner for of loop is iterate through episode of that currently iterated season
+If episode is not found,episodeFound is set to false and appropriate detail is alerted
+If episode is found,episodeFound is set to true and loop is breaked 
+The episode  details is then displayed on html page using document.getElementById("id1").innerText = episodedetails
+
+
+---------------------------------------------------------The working of 2)Search by Episode IDs------------------------------------------------
+
+
+After selecting option as 2
+
+User is prompted to enter pokemon name of next Evolution
+
+This name is then passed to the function getpokemonEvolution
+
+I initiazed a flag anyFound to false
+and initiazed pokeArray = [], as null
+
+Two for in loops are used in the nested manner 
+
+Outter loop is for (var x in pokemonList.pokemon), to iterate over the pokemon array
+
+Inner loop as for (var y in pokemonList.pokemon[x].next_evolution) to iterate the next_evolution for each pokemon 
+
+		Note -- The key "next_evolution " array is not present in all the pokemon items, hance following soution is used
+
+			next_evolution array is not present in every pokemonList.pokemon,hence a check is required before entering in the inner loop,
+			so that it doesn't returns undefined
+			Following statement is used -- if ((pokemonList.pokemon[x]).hasOwnProperty("next_evolution"))
+
+
+In the inner loop, conditional if statement is used to check if the entered name is in the next_evolution of current iteration as
+							if (pokemonList.pokemon[x].next_evolution[y].name == name)
+If found, anyFound is set to true
+and the pokemon name is pushed to array as pokeArray.push(pokemonList.pokemon[x].name)
+
+After completing whole iteration,
+if anyFound is still false, alert "No such pokemon found" is displayed
+if anyFound is true, The array of pokemon name is then displayed on html page using document.getElementById("id1").innerText = pokeArray.toString();
+
+
+
+---------------------------------------------------------The working of 3)Search by Episode Name------------------------------------------------
+
+
+After selecting option as 3
+
+User is prompted to enter Weakness of pokemon
+
+This name is then passed to the function getPokemonByWeakness
+
+I initiazed a flag anyFound to false
+and initiazed pokeArray = [], as null
+
+Two for in loops are used in the nested manner 
+
+Outter loop is for (var x in pokemonList.pokemon), to iterate over the pokemon array
+
+Inner loop as for for (var y in pokemonList.pokemon[x].weaknesses) to iterate the weaknesses array for each pokemon 
+
+In the inner loop, conditional if statement is used to check if the entered weakness is in the weakness array of current iteration as
+							 if (pokemonList.pokemon[x].weaknesses[y] == weakness)
+
+							if (pokemonList.pokemon[x].next_evolution[y].name == name)
+
+If found, anyFound is set to true
+and the pokemon name is pushed to array as pokeArray.push(pokemonList.pokemon[x].name)
+
+
+After completing whole iteration,
+if anyFound is still false, alert "No such pokemon found" is displayed
+if anyFound is true, The array of pokemon name is then displayed on html page using document.getElementById("id1").innerText = pokeArray.toString();
+
+
+
+
+
+
+
+
+
+
+
